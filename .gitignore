@@ -1,0 +1,8 @@
+TEST
+TRAIN
+train.txt
+test.txt
+.idea
+venv
+fonts
+__pycache__
