@@ -16,11 +16,12 @@ class ImageUtil:
     def preprocess(self, image):
         image = self._scale_axis(image)
         image = self._grayscale(image)
-        image = self._pad(image)
+        #image = self._pad(image)
         image = np.expand_dims(image, axis=2)
         return image
 
     def _scale_axis(self, image: np.ndarray) -> np.ndarray:
+        '''
         height, width, _ = image.shape
         scaling_factor = height / self._image_height
         if height != self._image_height:
@@ -33,6 +34,8 @@ class ImageUtil:
         elif width > self._image_width:
             # the height matches, but the width is longer
             image = cv2.resize(image, (self._image_width, self._image_height), interpolation=cv2.INTER_AREA)
+        '''
+        image = cv2.resize(image, (self._image_width, self._image_height), interpolation=cv2.INTER_AREA)
         return image
 
     @staticmethod
